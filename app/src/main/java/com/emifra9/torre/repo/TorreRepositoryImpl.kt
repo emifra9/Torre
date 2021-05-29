@@ -26,7 +26,12 @@ class TorreRepositoryImpl @Inject constructor(
              val result = withTimeout(5_000) {
                  torreService.getUser(userId)
              }
-             torreDao.save(result)
+             val items = result.body()?.person
+             if (items != null) {
+                 torreDao.save(items)
+             }
+
+
          } catch (error: Throwable) {
              throw Error("Unable to refresh title", error)
          }

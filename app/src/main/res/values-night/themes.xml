@@ -2,9 +2,9 @@
     <!-- Base application theme. -->
     <style name="Theme.Torre" parent="Theme.AppCompat.Light.DarkActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/purple_200</item>
-        <item name="colorPrimaryDark">@color/purple_700</item>
-        <item name="colorAccent">@color/teal_200</item>
+        <item name="colorPrimary">@color/torre_background</item>
+        <item name="colorPrimaryDark">@color/torre_background_dark</item>
+        <item name="colorAccent">@color/torre_accent</item>
         <!-- Customize your theme here. -->
     </style>
 </resources>

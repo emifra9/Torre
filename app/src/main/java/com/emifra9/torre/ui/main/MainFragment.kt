@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import com.bumptech.glide.Glide
 import com.emifra9.torre.databinding.MainFragmentBinding
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -37,6 +38,8 @@ class MainFragment : Fragment() {
 
         viewModel.user.observe(viewLifecycleOwner, { user ->
             binding.name.text = user.name
+            binding.summaryOfBio.text = user.summaryOfBio
+            context?.let { Glide.with(it).load(user.picture).circleCrop().into(binding.imgProfile) }
         })
 
 

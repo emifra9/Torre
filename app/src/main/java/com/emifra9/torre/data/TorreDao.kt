@@ -15,6 +15,6 @@ interface TorreDao {
     fun load(userId: String): Flow<User>
 
     @Insert( onConflict = OnConflictStrategy.REPLACE)
-    fun save(user: User)
+    suspend  fun save(user: User)
 
 }
