@@ -1,6 +1,6 @@
-<resources >
+<resources>
     <!-- Base application theme. -->
-    <style name="Theme.Torre" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="Theme.Torre" parent="Theme.MaterialComponents.Light.DarkActionBar">
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/torre_background</item>
         <item name="colorPrimaryDark">@color/torre_background_dark</item>
@@ -9,8 +9,13 @@
     </style>
 
     <!-- Custom theme for showing splash screen-->
-    <style name="SplashTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="SplashTheme" parent="Theme.MaterialComponents.Light.DarkActionBar">
         <item name="android:windowBackground">@drawable/splash_background</item>
         <item name="android:statusBarColor">@color/torre_background</item>
+    </style>
+
+    <style name="ThemeOverlay.Torre.FullscreenContainer" parent="">
+        <item name="fullscreenBackgroundColor">@color/light_blue_600</item>
+        <item name="fullscreenTextColor">@color/light_blue_A200</item>
     </style>
 </resources>

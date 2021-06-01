@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">Torre</string>
+    <string name="str_img">Profile picture</string>
+    <string name="fab_content_desc">Find user</string>
+    <string name="nousers">Please click the button and start finding users!!!</string>
+    <string name="find_user">Find User</string>
+    <string name="username">Username</string>
+    <string name="search">Search</string>
 </resources>

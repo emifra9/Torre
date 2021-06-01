@@ -28,7 +28,8 @@ internal object  DatabaseModule {
             appContext,
             TorreDb::class.java,
             "torre-db"
-        ).build()
+        ).fallbackToDestructiveMigration()
+         .build()
     }
 
 }

@@ -4,8 +4,8 @@ package com.emifra9.torre.repo
 import com.emifra9.torre.api.TorreService
 import com.emifra9.torre.data.TorreDao
 import com.emifra9.torre.data.User
+import com.emifra9.torre.utils.Resource
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.withTimeout
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -17,25 +17,28 @@ class TorreRepositoryImpl @Inject constructor(
 
 
 
-      override fun getUser(userId: String): Flow<User> {
+    override  fun getUser(userId: String): Flow<User> {
           return torreDao.load(userId)
     }
 
-     override suspend fun refreshUser(userId: String) {
-         try {
-             val result = withTimeout(5_000) {
-                 torreService.getUser(userId)
-             }
-             val items = result.body()?.person
-             if (items != null) {
-                 torreDao.save(items)
-             }
+    override fun getAllUsers():  Flow<List<User>> {
+        return torreDao.loadAllUsers()
+    }
 
 
-         } catch (error: Throwable) {
-             throw Error("Unable to refresh title", error)
-         }
-
+     override suspend fun  getUserApi(userId:String): Resource<User> {
+        Resource.loading( null)
+        return try {
+            val result = torreService.getUser(userId)
+            if (result.isSuccessful && result.body()!!.person.name.isNotEmpty()) {
+                torreDao.save(result.body()!!.person)
+                return Resource.success(result.body()!!.person)
+            }else{
+                Resource.error("User not found", null)
+            }
+        } catch (e: Throwable) {
+            Resource.error("Unknown Error", null)
+        }
     }
 
 

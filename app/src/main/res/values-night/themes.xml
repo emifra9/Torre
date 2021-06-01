@@ -1,10 +1,15 @@
-<resources >
+<resources>
     <!-- Base application theme. -->
-    <style name="Theme.Torre" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="Theme.Torre" parent="Theme.MaterialComponents.Light.DarkActionBar">
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/torre_background</item>
         <item name="colorPrimaryDark">@color/torre_background_dark</item>
         <item name="colorAccent">@color/torre_accent</item>
         <!-- Customize your theme here. -->
+    </style>
+
+    <style name="ThemeOverlay.Torre.FullscreenContainer" parent="">
+        <item name="fullscreenBackgroundColor">@color/light_blue_900</item>
+        <item name="fullscreenTextColor">@color/light_blue_A400</item>
     </style>
 </resources>

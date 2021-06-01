@@ -1,25 +1,35 @@
 package com.emifra9.torre.ui.main
 
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.asLiveData
-import androidx.lifecycle.viewModelScope
+import androidx.lifecycle.*
+import com.emifra9.torre.data.User
 import com.emifra9.torre.repo.TorreRepository
+import com.emifra9.torre.utils.Resource
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
 class MainViewModel @Inject constructor(
-    torreRepository: TorreRepository
+    private val torreRepository: TorreRepository
 )  : ViewModel() {
-    init {
-        viewModelScope.launch {
-            torreRepository.refreshUser("emilianofraile9")
-        }
+
+
+
+
+     fun getUser(publicId: String): LiveData<User> {
+        return torreRepository.getUser(publicId).asLiveData()
     }
 
-    val user = torreRepository.getUser("emilianofraile9").asLiveData()
+    fun getAllUsers() : LiveData<List<User>> {
+        return  torreRepository.getAllUsers().asLiveData()
+    }
 
-
+    fun findUser(publicId: String): MutableLiveData<Resource<User>> {
+        val user = MutableLiveData<Resource<User>>()
+        viewModelScope.launch {
+            user.postValue( torreRepository.getUserApi(publicId))
+        }
+        return user
+    }
 
 }
